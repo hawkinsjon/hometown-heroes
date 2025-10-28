@@ -1,0 +1,16 @@
+{
+  "name": "hometown-heroes-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "@aws-sdk/client-s3": "^3.550.0",
+    "@aws-sdk/s3-request-presigner": "^3.550.0",
+    "uuid": "^11.1.0",
+    "cors": "^2.8.5"
+  }
+} 
