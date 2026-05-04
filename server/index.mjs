@@ -221,8 +221,9 @@ app.get('/review', async (req, res) => {
     const actorEmail = payload.recipientEmail || '';
     const adminPrimaryEmail = (ADMIN_EMAIL_RECIPIENTS[0] || '').toString();
 
-    const defaultApproveMsg = `Hello ${payload.sponsorName},\n\nYour Hometown Hero banner for ${payload.veteranName} has been approved and will be sent to the printers soon.\n\nAfter the banner has been created it will be sent to the Berkeley Heights DPW to be put up in town.\n\nThank You!\nBerkeley Heights Veterans Committee`;
-    const defaultIssueMsg = `Hello ${payload.sponsorName},\n\nThank you for your Hometown Hero banner submission for ${payload.veteranName}. We took a look and need a small update before we can approve it. Could you please send a clearer photo of the veteran?\n\nIf you have any questions, please use the Reply button below${adminPrimaryEmail ? ` or email ${adminPrimaryEmail}` : ''} and we will be happy to help.\n\nThank you!\nThe Berkeley Heights Veterans Affairs Committee`;
+    const sponsorFirstName = String(Array.isArray(payload.sponsorName) ? payload.sponsorName[0] : (payload.sponsorName || '')).trim().split(/\s+/)[0] || '';
+    const defaultApproveMsg = `Hi ${sponsorFirstName},\n\nYour Hometown Hero banner for ${payload.veteranName} has been approved and will be sent to the printers soon.\n\nAfter the banner has been created it will be sent to the Berkeley Heights DPW to be put up in town.\n\nThank You!\nBerkeley Heights Veterans Committee`;
+    const defaultIssueMsg = `Hi ${sponsorFirstName},\n\nThank you for your Hometown Hero banner submission for ${payload.veteranName}. We took a look and need a small update before we can approve it. Could you please send a clearer photo of the veteran?\n\nIf you have any questions, please use the Reply button below${adminPrimaryEmail ? ` or email ${adminPrimaryEmail}` : ''} and we will be happy to help.\n\nThank you!\nThe Berkeley Heights Veterans Affairs Committee`;
 
     // Quick reasons removed to keep the form simple and focused
 
